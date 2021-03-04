@@ -19,7 +19,14 @@
 </a>
 </li>
  
-
+<li >
+<a href="survey_form_student">
+<span class="pcoded-micon"><i class="ti-layers-alt"></i></span>
+<span class="pcoded-mtext" data-i18n="nav.animations.main">Survey</span>
+<span class="pcoded-mcaret"></span>
+</a>
+</li>
+ 
 
  
 

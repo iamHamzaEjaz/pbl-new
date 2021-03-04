@@ -876,7 +876,7 @@ include 'connection.php';
 
 $i=1;
 
-$sqlq = "SELECT assign_projects.section , groupleader.proj , groupleader.approve_status	, student.s_name  ,assign_projects.e_id	, assign_projects.grp_id	from assign_projects 
+$sqlq = "SELECT assign_projects.section , groupleader.proj	, student.s_name  ,assign_projects.e_id	, assign_projects.grp_id	from assign_projects 
        JOIN  groupleader on groupleader.gid=assign_projects.grp_id
 	   JOIN student on student.s_roll = groupleader.member
 	   where assign_projects.e_id = '$eid'  and groupleader.projEvaluate ='no'
@@ -888,21 +888,9 @@ while ($row = $resultq->fetch_assoc())
   	echo '<tr>';
 	echo '<td>'.$i.' '.$row['section'].'</td>';
  echo '<td style="color:green;" >'.$row['proj'].'</td>';
-//  $q="SELECT  `approve_status` FROM `groupleader` WHERE approve_status ='1'"
-//  $resultq = $conn->query($q);
-//  $row1 = $resultq->fetch_assoc()
-if($row['approve_status'] == 1){
-    echo '<td><a href="evaluationSheet.php?eid='.$row['e_id'].'&&gid='.$row['grp_id'].'">
-    <button type="button" class="btn btn-success btn-round btn-mini ">Evaluate</button></a></td>';
-  
-}
-if($row['approve_status'] == 0){
-    echo '<td><a href="approveGroup.php?gid='.$row['grp_id'].'">
-    <button type="button" class="btn btn-danger btn-round btn-mini ">Approve</button> </a>
-    </td>';
-}
-
- echo '<td>'.$row['s_name'].'</td>';
+ 
+ echo '<td><a href="evaluationSheet.php?eid='.$row['e_id'].'&&gid='.$row['grp_id'].'"><button type="button" class="btn btn-success btn-round btn-mini ">Evaluate</button></a></td>
+ '; echo '<td>'.$row['s_name'].'</td>';
   
   
   	echo '</tr>';

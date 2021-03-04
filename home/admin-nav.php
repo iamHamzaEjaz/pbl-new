@@ -1,4 +1,4 @@
-<nav class="pcoded-navbar">
+<nav class="pcoded-navbar" style="position: absolute !important ;">
 <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
 <div class="pcoded-inner-navbar main-menu">
 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Navigation</div>

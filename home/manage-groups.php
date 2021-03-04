@@ -879,7 +879,7 @@ if ($result->num_rows > 0)
 		 $sec = $row['section'];
 		 $course = $row['course'];
 		 $gid = $row['gid'];
-    $proTitle = $row['proj'];
+ 
 		   
  
 
@@ -1022,76 +1022,20 @@ $resultl = $conn->query($sqll);
   echo '<span class="badge"
   style="background-color:#54d98c;color:white;"
   >'.$req.'</span>
-</a>';
-if($row['approve_status'] == 0){
- echo '<button type="button" class="btn btn-danger btn-mini f-right m-1 alert-drop m-b-10" onclick="Dropalert('.$groupIDl.')">Drop Group</button>
- <button type="button" class="btn btn-danger btn-mini f-right m-1 alert-drop m-b-10" data-toggle="modal" data-target="#edit-modal">Edit Group Title</button>
- ';}
- if($row['approve_status'] == 1){
-  echo '<script>
-  document.getElementById("Button").disabled = true;
-  </script>';
-  echo '<button type="button" id="Button"  class="btn btn-danger btn-mini f-right m-1 alert-drop m-b-10" onclick="Dropalert('.$groupIDl.')">Drop Group</button>
-  <button type="button"  id="Button"  class="btn btn-danger btn-mini f-right m-1 alert-drop m-b-10" data-toggle="modal" data-target="#edit-modal">Edit Group Title</button>
-  ';}
- ?>
-<form action="editTitle.php" method="POST">
-<div class="modal fade" id="edit-modal" tabindex="-1">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Edit Group Title</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body p-b-0">
+</a>
 
-<div class="row">
-<div class="col-sm-12">
-<div>
+ <button type="button" class="btn btn-danger btn-mini f-right m-1 alert-drop m-b-10" onclick="Dropalert('.$groupIDl.')">Drop Group</button>
 
-<input type="hidden" name="gid" style="display:none;" value="<?php echo $groupIDl; ?>" />
-
-
-
-<input type="text" value="<?php echo $fal; ?>" name="fall" class="form-control" autocomplete="off" style="display:none;" >
-<input type="text" value="<?php echo $sec; ?>" name="section" class="form-control" autocomplete="off" style="display:none;" >
-<input type="text" value="<?php echo $cour; ?>" name="course" class="form-control" autocomplete="off" style="display:none;" >
-<input type="text" value="<?php echo $userRoll; ?>" name="member" class="form-control" autocomplete="off" style="display:none;" >
- 
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12">
-<div>
-
-<label class="form-control-label" style="margin-top:7px;"><b>Project Title</b></label>
-<input type="text" name="proj" class="form-control" autocomplete="off" placeholder="Enter Project Title" required>
-</div>
-</div>
-</div>
 
  
-</div>
-<hr>
-<div class="modal-footer">
-<button type="submit" class="btn btn-primary">Edit</button>
-<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-</div>
-</div>
-</div>
-</div>
-</form>
 
 
 
 </div>
 
 </div>
-</div>
-<?php
+</div>';
+
 	 }
 	 
 	 // show remaining for group leader 
