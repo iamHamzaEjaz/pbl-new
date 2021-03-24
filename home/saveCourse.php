@@ -2,13 +2,14 @@
 include 'connection.php';
 
    $name = $_POST['name'];
+   $dept_id = $_POST['department'];
 	   $level = $_POST['level'];
 	   $max = $_POST['max'];
 	   $min = $_POST['min'];
 	
 
-$sql = "INSERT INTO course			(c_name ,c_level ,c_max , c_min)        
-							VALUES ('$name','$level', '$max','$min')";
+$sql = "INSERT INTO course	(dept_id ,c_name ,c_level ,c_max , c_min)        
+							VALUES ('$dept_id','$name','$level', '$max','$min')";
 
 if ($conn->query($sql) === TRUE) {
    

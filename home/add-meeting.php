@@ -18,6 +18,31 @@ $roww = $resultq->fetch_assoc();
 
 $eid = $roww['e_id'];
 
+$gid=$_GET['gid'];
+
+$sql = "SELECT * from groupleader where gid = '$gid'";
+$result22 = $conn->query($sql);
+
+$roww2 = $result22->fetch_assoc();
+
+$cid = $roww2['course'];
+echo $cid;
+
+$sql2 = "SELECT * from iterations where course_id = '$cid'";
+
+
+
+$result22 = $conn->query($sql2);
+
+// $roww22 = $result22->fetch_assoc();
+
+//$id_title = $roww22['it_title'];
+
+
+
+
+
+
 
 $sqlq = "SELECT assign_projects.section , groupleader.proj	, student.s_name  ,assign_projects.e_id	, assign_projects.grp_id	from assign_projects 
        JOIN  groupleader on groupleader.gid=assign_projects.grp_id
@@ -215,12 +240,12 @@ $resultq = $conn->query($sqlq);
                                   </div>
                                   <div class="form-group col-md-4">
                                     <label for="inputProjects">Project</label>
-                                    <select class="form-control" name="project">
+                                    <select class="form-control" name="iteration">
                                       <option value="0" disabled selected> --SELECT PROJECT-- </option>
-                                    <?php   while ($row = $resultq->fetch_assoc())
+                                    <?php   while ($roww22 = $result22->fetch_assoc())
                                     {
-                                   ?><option value="<?php   echo $row['grp_id'];?>"><?php 
-                                    echo $row['proj']; ?></option>
+                                   ?><option value="<?php   echo $roww22['it_id']; ?>"><?php 
+                                    echo $roww22['it_title']; ?></option>
                                     <?php } ?>
                                     </select>
                                  
