@@ -329,7 +329,11 @@ WHERE `sc`.`s_course`='$courseID' AND `teacher`.`t_dept`='$deptID'");
             </head>
 
                 <body>
+<<<<<<< HEAD
                     <div id="chartContainer" style="height: 380px; width: 85%;"></div>
+=======
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+>>>>>>> 9a8e0876a00f443bb11978d2af1e5956e613c845
                     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
