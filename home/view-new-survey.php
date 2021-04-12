@@ -193,6 +193,7 @@ include 'manager_nav.php';
 <th>Name</th>
 <th>Date</th>
 <th>Course</th>
+<th>View All Questions</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -206,15 +207,18 @@ while($row=mysqli_fetch_array($result) ){?>
 <td><?php echo ++$i; ?></td>
 <td><?php echo $row['survey_name']; ?></td>
 <td><?php echo $date = date('j F, Y', strtotime($row['survey_date']));?></td>
-<?php $id = $row['survey_course'];
-$result2=mysqli_query($conn,"SELECT * FROM `course` WHERE c_id='$id'") ;  
+<?php $cid = $row['survey_course'];
+$result2=mysqli_query($conn,"SELECT * FROM `course` WHERE c_id='$cid'") ;  
 $row2=mysqli_fetch_array($result2);?>
 
 <td><?php echo $row2['c_name']; ?></td>
+<td class="action-icon">
+<center> <a href="view-survey-questions.php?id=<?php echo $row['id']; ?>" class="text-muted"><i class="icofont icofont-automation"></i>
+</a></center>
+</td>
 <td>
-
-<a href="#Modal-tab" onclick="<?php $id = $row['id'] ?>" >   
-<button type="button" class="btn btn-primary float-right btn-mini btn-skew" data-toggle="modal" data-target="#Modal-tab">Add New Questions</button></a> </td>
+<a href="add-survey-question.php?id=<?php echo $row['id']; ?>" class="btn btn-primary float-right btn-mini btn-skew">Add New Questions</a>
+</td>
 
 </tr>
 <?php } ?>
@@ -234,7 +238,7 @@ $row2=mysqli_fetch_array($result2);?>
       </div>
       <div class="modal-body">
         <form action="add-ques-db.php" method="post">
-            <input type="hidden" name="survey_id" value="<?php echo $id ?>">
+            <input type="text" name="survey_id" value="<?php echo $id ?>">
             <div class="form-group">
                 <label for="question" >Question </label>
                 <input type="text" class="form-control" name="question" id="question">
@@ -259,7 +263,8 @@ $row2=mysqli_fetch_array($result2);?>
                 <label for="rub5" >Ruberic 5</label>
                 <input type="text" class="form-control" name="rub5" id="rub5">
             </div>
-            <button type="submit" class="btn btn-primary" > Add </button>
+         
+            <button type="submit"  class="btn btn-primary " > Add </button>
         </form>
       </div>
    
@@ -313,48 +318,10 @@ function delete_student(id)
 </div>
 
 
-<!--[if lt IE 9]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
 
+<script>
+
+</script>
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="../bower_components/jquery/js/jquery.min.js"></script>
 <script type="text/javascript" src="../bower_components/jquery-ui/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../bower_components/popper.js/js/popper.min.js"></script>

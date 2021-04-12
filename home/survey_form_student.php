@@ -19,7 +19,9 @@ $row1 = mysqli_fetch_array($result);
 $s_id = $row1['s_course'];
 $fetch = mysqli_query($conn , "SELECT * FROM survey WHERE survey_course = '$s_id'");
 $row = mysqli_fetch_array($fetch);
-$id=$row['id'];
+$id=$_GET['survey_id'];
+//$row['id'];
+//$getSurveyId=$_GET['survey_id'];
 $fetch1 = mysqli_query($conn , "SELECT * FROM survey_questions WHERE survey_id = '$id'");
 
 ?>
@@ -416,27 +418,37 @@ label .glyphicon {
 </h3>
         </div>
 		
-		<form action ="sfasdasd.php" method="post">
-        <?php  while($row = mysqli_fetch_array($fetch1)) {?>
+		<form action ="survey-form-studentDB.php" method="POST">
+        <?php $i=0;
+        $j=0;
+        $k=0;
+         while($row = mysqli_fetch_array($fetch1)) {
+            $i++;
+            ?>
            <div class="modal-header" style=" justify-content: flex-start; padding:12px; ">
 
 
-            <h5><span class="label label-info" id="qid">1</span> <?php echo $row['question']; ?></h5>
+            <h5><span class="label label-info" id="qid"><?php echo $i; ?></span> <?php echo $row['question']; ?></h5>
           
         </div>  
          <center> 
 		 
-       <?php echo $q_id=$row['id'];
+       <?php  $q_id=$row['id'];
+       
          $toottip = mysqli_query($conn,"SELECT * FROM survey_ruberics WHERE ques_id = '$q_id'");
 while($row2 = mysqli_fetch_array($toottip)){
+    ++$j;
+    ++$k;
 ?>
+<input type="text" name="q_id[<?php echo $k; ?>]" value="<?php echo $q_id; ?>">
+<input type="text" name="id" value="<?php echo $id; ?>">
 		 <div class="quiz" id="quiz" data-toggle="buttons" style=" padding:10px;">
-           <label style="margin:10px;" class="element-animation1    btn-default  ">  0 <br>  <input  type="radio" name="q_answer" title="<?php echo $row2['rub1']; ?>" value="0" style=" height:20px ; width:20px; " required/></label>
-           <label style="margin:10px;" class="element-animation1    btn-default  ">   1 <br> <input type="radio" name="q_answer" value="1" title="<?php echo $row2['rub2']; ?>"  style=" height:20px ; width:20px; "  required/></label>
-           <label style="margin:10px;" class="element-animation2   btn-default  ">   2 <br>  <input type="radio" name="q_answer" value="2" title="<?php echo $row2['rub3']; ?>"  style=" height:20px ; width:20px; " required/></label>
-           <label style="margin:10px;" class="element-animation3   btn-default  ">  3 <br> <input type="radio" name="q_answer" value="3"  title="<?php echo $row2['rub2']; ?>"  style=" height:20px ; width:20px; "  required/></label>
-           <label style="margin:10px;" class="element-animation4   btn-default  "> 4 <br>  <input type="radio" name="q_answer" value="4" style=" height:20px ; width:20px; "  required/></label>
-           <label style="margin:10px;" class="element-animation4   btn-default  "> 5 <br>  <input type="radio" name="q_answer" value="5" style=" height:20px ; width:20px; " required /></label>
+           <label style="margin:10px;" class="element-animation1   btn-default  "> 1 <br> <input type="radio" name="q_answer[<?php echo $j; ?>]" title="<?php echo $row2['rub1']; ?>" value="0" style=" height:20px ; width:20px; " /></label>
+           <label style="margin:10px;" class="element-animation1   btn-default  "> 2 <br> <input type="radio" name="q_answer[<?php echo $j; ?>]" value="1" title="<?php echo $row2['rub2']; ?>"  style=" height:20px ; width:20px; "  /></label>
+           <label style="margin:10px;" class="element-animation2   btn-default  "> 3 <br> <input type="radio" name="q_answer[<?php echo $j; ?>]" value="2" title="<?php echo $row2['rub3']; ?>"  style=" height:20px ; width:20px; " /></label>
+           <label style="margin:10px;" class="element-animation3   btn-default  "> 4 <br> <input type="radio" name="q_answer[<?php echo $j; ?>]" value="3"  title="<?php echo $row2['rub4']; ?>"  style=" height:20px ; width:20px; "  /></label>
+           <label style="margin:10px;" class="element-animation4   btn-default  "> 5 <br> <input type="radio" name="q_answer[<?php echo $j; ?>]" value="4"  title="<?php echo $row2['rub5']; ?>" style=" height:20px ; width:20px; "  /></label>
+
       	  </div>
 	   </center> <?php } } ?>
        <!-- <div class="modal-header" style=" justify-content: flex-start; padding:12px; ">
