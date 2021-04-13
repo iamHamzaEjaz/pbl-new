@@ -9,19 +9,15 @@ include("../constants.php");
   if(empty($_SESSION["userName"]) || $_SESSION["userType"]!="HODI&C")
  {
     header('location:login');
-
  }
  include '../connection.php';
  
  $userName=$_SESSION["userName"];
  $userType=$_SESSION["userType"];
  $userRoll=$_SESSION["userRoll"];
-
-
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
 
 <!-- Mirrored from html.codedthemes.com/mash-able/light/tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Sep 2019 14:09:10 GMT -->
